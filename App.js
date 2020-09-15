@@ -1,14 +1,99 @@
-// import React from 'react';
-// import Loading from  "./Loding";
+// import {CreateStackNavigator} from 'react-navigation-stack';
+// import React, { Component, useState } from "react";
+// import { StyleSheet, Text, View, Image, TouchableOpacity, ToastAndroid } from "react-native";
+// import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from "react-native-simple-radio-button"; 
+// import Loading from "./Loding";
+// import MainPage from './MainPage';
+// import MainScreen from './MainScreen';
+// import Sub1Screen from './Sub1Screen';
+// import Sub2Screen from './Sub2Screen';
 
-// export default function App() {
-//   return (
-//     <Loading />
-//   );
+
+import React, {Component} from 'react';
+import {Platform, StyleSheet, Text, View} from 'react-native';
+import AppNavigator from './AppNavigator'
+
+
+export default class App extends Component{
+  render() {
+    return (
+      <AppNavigator/>
+    );
+  }
+}
+
+
+
+// import React, { Component, useState } from 'react'
+// import { Text, View, } from 'react-native'
+// import RadioForm,  { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button'
+
+// const gender =[
+//     { label:"Male", value:0},
+//     { label:"FeMale", value:1},
+//     { label:"Other", value:2}
+// ]
+
+
+
+// export default class App extends Component{
+//     state ={
+//       value: null,
+//     }
+//     render(){
+//       const {value} = this.state;
+//         return(
+//             <RadioForm
+//             radio_props={gender}
+//             initial={1} // you can set as per requirement, initial i set here 0 for male
+//             // initial={-1} // you can set as per requirement, initial i set here 0 for male
+//             onPress={(value)=> {
+//               this.setState({
+//                 value : value 
+//               })
+//               alert(value);
+//            }}
+//             buttonSize={40} // size of radiobutton
+//             buttonOuterSize={60}
+//             selectedButtonColor={'green'}
+//             selectedLabelColor={'green'}
+//             labelStyle={{fontSize:15}}
+//             />
+
+//         )
+//     }
+
 // }
-import React, { useState } from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity, ToastAndroid } from "react-native";
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from "react-native-simple-radio-button"; 
+// export default function App(props){
+//   const [value,setValue] = useState(0);
+//     return(
+//         <View>
+//           <RadioForm
+//           radio_props={gender}
+//           initial={0} // you can set as per requirement, initial i set here 0 for male
+//           // initial={-1} // you can set as per requirement, initial i set here 0 for male
+//           onPress={(val)=> {
+//             setValue(val);
+//             alert(val);
+//          }}
+//           buttonSize={40} // size of radiobutton
+//           buttonOuterSize={60}
+//           selectedButtonColor={'green'}
+//           selectedLabelColor={'green'}
+//           labelStyle={{fontSize:15}}
+//           />
+//         <View>
+//           <MainPage
+//             val = {value}
+//           />
+//         </View>
+//         </View>
+        
+
+//       )
+//   }
+
+
 
 const BlackDice = {
   1: require("./img/b1.png"),
@@ -30,22 +115,26 @@ const choice = [
   {label: "홀수", value: 0},
   {label: "짝수", value: 1}
 ];
-export default function App(){
-  const [redDice, setRedDice] = useState("1");
-  const [blackDice, setBlackDice] = useState("6");
-  const add = Number(redDice) + Number(blackDice);
-  const oddEven = (Number(redDice) + Number(blackDice)) % 2 ;
-  const a = "업";
 
-  function rollDice() {
-    const redDice = Math.floor((Math.random()) * 6 +1); // 1~6 random
-    const blackDice = Math.floor((Math.random()) * 6 +1); // 1~6 random
-    setRedDice(redDice);
-    setBlackDice(blackDice);
-  }
-  return(
-    <View style={styles.container}>
-      <Text>[플레이어 화면]</Text>
+
+
+// export default function App(){
+//   const [value,setValue] = useState(0);
+//   const [redDice, setRedDice] = useState("1");
+//   const [blackDice, setBlackDice] = useState("6");
+//   const add = Number(redDice) + Number(blackDice);
+//   const oddEven = (Number(redDice) + Number(blackDice)) % 2 ;
+  
+//   function rollDice() {
+//     const redDice = Math.floor((Math.random()) * 6 +1); // 1~6 random
+//     const blackDice = Math.floor((Math.random()) * 6 +1); // 1~6 random
+//     setRedDice(redDice);
+//     setBlackDice(blackDice);
+//   }
+  // return(
+    
+    // <View>
+      /* <Text>[플레이어 화면]</Text>
       <View style={styles.row}>
         <Image style={styles.img} source={RedDice[redDice]} />
         <Image style={styles.img} source={BlackDice[blackDice]} />
@@ -59,9 +148,10 @@ export default function App(){
           buttonColor= {'green'}
           selectedButtonColor={'green'}
           disabled={false}
-          onPress ={(value) =>{}}
+          onPress ={(val) =>{
+            setValue(val);
+          }}
         >
-
         </RadioForm>
       </View>
       <TouchableOpacity onPress={rollDice}>
@@ -70,33 +160,36 @@ export default function App(){
         </View>
       </TouchableOpacity>
       <View>
-        <Text>두 주사위의 합은 {add}입니다.</Text>
-        <Text>{oddEven == 1 ? '홀수 입니다' : '짝수 입니다'}</Text>
-      </View>
-    </View>
-  );
-}
+        <MainPage
+          add = {add}
+          val = {value}
+          oddEven = {oddEven}
+        />
+      </View> */
+    // </View>
+  // );
+// }
 
-const styles = StyleSheet.create({
-  container : {
-    flex : 1,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  img : {
-    width: 120,
-    height: 120,
-    margin: 13
-  },
-  row : {
-    flexDirection: "row"
-  },
-  pushBtn : {
-    backgroundColor: "#F39C12",
-    marginTop: 30,
-    paddingHorizontal: 40,
-    paddingVertical: 20,
-    borderRadius: 8
-  }
+// const styles = StyleSheet.create({
+//   container : {
+//     flex : 1,
+//     justifyContent: "center",
+//     alignItems: "center"
+//   },
+//   img : {
+//     width: 120,
+//     height: 120,
+//     margin: 13
+//   },
+//   row : {
+//     flexDirection: "row"
+//   },
+//   pushBtn : {
+//     backgroundColor: "#F39C12",
+//     marginTop: 30,
+//     paddingHorizontal: 40,
+//     paddingVertical: 20,
+//     borderRadius: 8
+//   }
   
-});
+// });
